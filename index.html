@@ -71,9 +71,9 @@
       }
       .btn-primary { background: linear-gradient(90deg, var(--primary), #5aa1ff); color: white; }
       .btn-outline { border: 1px solid var(--border); color: var(--muted); }
-      .top-posts { border-bottom: 1px solid rgba(137,185,255,.2); background: rgba(8,18,35,.72); }
-      .post-strip { display:flex; gap:.55rem; overflow:auto; padding:.65rem 0; }
-      .post-link { white-space: nowrap; border:1px solid rgba(137,185,255,.22); border-radius:999px; padding:.4rem .75rem; color:#d7e7ff; background:rgba(19,35,64,.85); font-size:.82rem; }
+      .top-posts { border-bottom: 1px solid rgba(137,185,255,.2); background: rgba(8,18,35,.72); overflow: hidden; }
+      .post-strip { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:.55rem; padding:.65rem 0; }
+      .post-link { display:block; border:1px solid rgba(137,185,255,.22); border-radius:999px; padding:.4rem .75rem; color:#d7e7ff; background:rgba(19,35,64,.85); font-size:.82rem; white-space: normal; overflow-wrap: anywhere; }
       .post-link b { color: var(--primary-soft); margin-right: .25rem; }
       .hero {
         position: relative;
@@ -145,6 +145,7 @@
       @media (max-width: 980px) {
         .nav { display: none; }
         .kpis, .grid-3, .two-col, .quote-grid, .news-grid { grid-template-columns: 1fr; }
+        .post-strip { grid-template-columns: 1fr; }
       }
     </style>
     <script type="application/ld+json">
