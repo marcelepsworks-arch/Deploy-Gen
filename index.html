@@ -3,42 +3,479 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WP Deploy Gen</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              wp: {
-                blue: '#21759b',
-                dark: '#101517',
-                accent: '#38bdf8', // Light blue for dark mode
-              },
-              dark: {
-                bg: '#0f172a',
-                surface: '#1e293b',
-                border: '#334155'
-              }
-            }
-          }
-        }
+    <title>Precision GNSS | Professional High-Accuracy Positioning Technology</title>
+    <meta
+      name="description"
+      content="Precision GNSS provides high-accuracy GNSS technology, RTK-ready workflows, practical tutorials, and industry news for surveying, construction, agriculture, infrastructure, and autonomous systems."
+    />
+    <meta
+      name="keywords"
+      content="precision GNSS, RTK GNSS, high-accuracy positioning, GNSS tutorials, GNSS news, survey technology"
+    />
+    <link rel="canonical" href="https://www.precision-gnss.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Precision GNSS | Professional High-Accuracy Positioning Technology" />
+    <meta
+      property="og:description"
+      content="Mission-ready GNSS positioning with practical resources, tutorials, and technical content for high-performance field operations."
+    />
+    <meta property="og:url" content="https://www.precision-gnss.com/" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --bg: #07101f;
+        --surface: #0e1930;
+        --surface-alt: #132340;
+        --border: #274271;
+        --primary: #2d82ff;
+        --primary-soft: #89b9ff;
+        --text: #edf3ff;
+        --muted: #afc3e9;
+        --max-width: 1200px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(180deg, #040a15, var(--bg));
+        color: var(--text);
+        line-height: 1.6;
+      }
+      img { max-width: 100%; display: block; height: auto; }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(100% - 2.5rem, var(--max-width)); margin-inline: auto; }
+      .topbar {
+        position: sticky; top: 0; z-index: 40;
+        background: rgba(7, 16, 31, 0.82);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(137, 185, 255, 0.2);
+      }
+      .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.95rem 0; }
+      .brand-wrap { display: flex; align-items: center; gap: 0.65rem; }
+      .brand-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; }
+      .brand { font-weight: 800; letter-spacing: 0.06em; font-size: 1.05rem; }
+      .nav { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: 0.92rem; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        border-radius: 999px;
+        padding: 0.75rem 1.15rem;
+        font-weight: 600;
+      }
+      .btn-primary { background: linear-gradient(90deg, var(--primary), #5aa1ff); color: white; }
+      .btn-outline { border: 1px solid var(--border); color: var(--muted); }
+      .hero {
+        position: relative;
+        padding: 6rem 0 5rem;
+        background-image: linear-gradient(110deg, rgba(5, 11, 23, 0.93) 25%, rgba(5, 11, 23, 0.4) 70%),
+          url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1900&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+      .eyebrow {
+        display: inline-block;
+        border: 1px solid rgba(137, 185, 255, 0.35);
+        border-radius: 999px;
+        color: var(--primary-soft);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.35rem 0.7rem;
+      }
+      h1 { margin: 0.95rem 0 1rem; font-size: clamp(2.05rem, 5vw, 4.15rem); line-height: 1.08; max-width: 17ch; }
+      h2 { margin: 0 0 0.8rem; line-height: 1.16; font-size: clamp(1.55rem, 3.4vw, 2.7rem); }
+      h3 { margin: 0 0 0.6rem; font-size: 1.15rem; }
+      .lead { color: var(--muted); max-width: 66ch; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.6rem; }
+      .kpis { margin-top: 2.1rem; display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .kpi { border: 1px solid rgba(137, 185, 255, 0.25); border-radius: 14px; padding: 1rem; background: rgba(15, 29, 56, 0.72); }
+      .kpi strong { display: block; font-size: 1.45rem; }
+      section { padding: 4.5rem 0; }
+      .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: end; margin-bottom: 1.35rem; }
+      .grid-3 { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .card {
+        border: 1px solid rgba(137, 185, 255, 0.2);
+        border-radius: 16px;
+        background: linear-gradient(160deg, rgba(17, 35, 64, 0.95), rgba(9, 17, 31, 0.95));
+        overflow: hidden;
+      }
+      .card-body { padding: 1.05rem 1.1rem 1.2rem; }
+      .card p { margin: 0; color: var(--muted); }
+      .two-col { display: grid; gap: 1.2rem; grid-template-columns: 1.2fr 1fr; }
+      .panel { border: 1px solid rgba(137, 185, 255, 0.2); border-radius: 16px; padding: 1.2rem; background: rgba(14, 25, 48, 0.85); }
+      .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+      .tab-btn { border: 1px solid var(--border); color: var(--muted); background: transparent; border-radius: 999px; padding: 0.46rem 0.8rem; font-weight: 600; cursor: pointer; }
+      .tab-btn.active { background: rgba(45, 130, 255, 0.22); color: #dcebff; border-color: var(--primary-soft); }
+      .tab-panel { display: none; }
+      .tab-panel.active { display: block; }
+      .feature-list { padding-left: 1.05rem; margin: 0.5rem 0 0; color: var(--muted); }
+      .feature-list li { margin-bottom: 0.38rem; }
+      .timeline { display: grid; gap: 0.7rem; }
+      .timeline-item { border: 1px solid rgba(137, 185, 255, 0.2); border-radius: 14px; padding: 0.8rem 1rem; background: rgba(9, 17, 31, 0.7); }
+      .quote-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      blockquote { margin: 0; padding: 1rem; border-radius: 14px; background: rgba(10, 20, 36, 0.86); border: 1px solid rgba(137, 185, 255, 0.2); color: var(--muted); }
+      .news-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .news-card { border: 1px solid rgba(137, 185, 255, 0.2); border-radius: 16px; background: rgba(12, 23, 43, 0.9); overflow: hidden; }
+      .news-content { padding: 1rem; }
+      .news-meta { color: var(--primary-soft); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+      .faq details { border: 1px solid rgba(137, 185, 255, 0.2); border-radius: 14px; background: rgba(12, 23, 43, 0.84); padding: 0.8rem 1rem; }
+      .faq details + details { margin-top: 0.7rem; }
+      .faq summary { cursor: pointer; font-weight: 600; }
+      .faq p { margin: 0.7rem 0 0; color: var(--muted); }
+      .cta-strip { text-align: center; border: 1px solid rgba(137, 185, 255, 0.35); border-radius: 22px; background: linear-gradient(140deg, #1b4386, #0c1d3b); padding: 2.2rem 1.2rem; }
+      footer { padding: 2.5rem 0; border-top: 1px solid rgba(137, 185, 255, 0.2); color: var(--muted); font-size: 0.92rem; }
+      .footer-links { margin-top: 0.7rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+      @media (max-width: 980px) {
+        .nav { display: none; }
+        .kpis, .grid-3, .two-col, .quote-grid, .news-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Precision GNSS",
+        "url": "https://www.precision-gnss.com/",
+        "logo": "https://www.precision-gnss.com/wp-content/uploads/precision-gnss-logo.png",
+        "description": "Professional GNSS and high-accuracy positioning technology for mission-critical field operations."
       }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "crypto-js": "https://esm.sh/crypto-js@4.2.0"
-  }
-}
-</script>
-</head>
-  <body class="bg-gray-50 text-gray-900 antialiased dark:bg-dark-bg dark:text-gray-100 transition-colors duration-200">
-    <div id="root"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Precision GNSS News and Tutorials",
+        "url": "https://www.precision-gnss.com/",
+        "description": "Latest GNSS news, practical tutorials, and implementation insights."
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand-wrap" href="#top" aria-label="Precision GNSS home">
+          <img class="brand-logo" src="https://www.precision-gnss.com/wp-content/uploads/precision-gnss-logo.png" alt="Precision GNSS original logo" loading="eager" />
+          <span class="brand">PRECISION GNSS</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="#technology">Technology</a>
+          <a href="#applications">Applications</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#news">News</a>
+          <a href="#tutorials">Tutorials</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="btn btn-primary" href="#contact">Request Consultation</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <span class="eyebrow">Professional GNSS Positioning Technology</span>
+          <h1>Reliable high-accuracy GNSS for teams that build, measure, and move the world.</h1>
+          <p class="lead">
+            Precision GNSS helps field and engineering teams execute positioning-critical operations with confidence.
+            From survey preparation to on-site verification, the platform supports consistent outputs, faster decisions,
+            and stronger quality control across complex environments.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#applications">Explore Industry Solutions</a>
+            <a class="btn btn-outline" href="#tutorials">Read Practical Tutorials</a>
+          </div>
+          <div class="kpis" aria-label="Performance overview">
+            <article class="kpi"><strong>Centimeter-level</strong> Positioning accuracy for precision-driven workflows.</article>
+            <article class="kpi"><strong>Multi-band</strong> Satellite tracking for resilient GNSS coverage.</article>
+            <article class="kpi"><strong>RTK-ready</strong> Correction architecture for real-time site operations.</article>
+            <article class="kpi"><strong>Field-proven</strong> Design mindset for demanding operational contexts.</article>
+          </div>
+        </div>
+      </section>
+
+      <section id="technology">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>Technology architecture built for robust precision positioning</h2>
+              <p class="lead">
+                The Precision GNSS platform combines advanced signal processing, correction-aware workflows,
+                and dependable data continuity for environments where positional certainty drives outcomes.
+              </p>
+            </div>
+            <a class="btn btn-outline" href="#contact">Discuss Technical Requirements</a>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Circuit board detail representing GNSS processing technology" loading="lazy" />
+              <div class="card-body">
+                <h3>Signal Integrity and Tracking Stability</h3>
+                <p>Engineered to maintain reliable lock and cleaner position outputs when operations face multipath, partial obstruction, or dynamic movement profiles.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1200&q=80" alt="Field engineer using precision positioning equipment" loading="lazy" />
+              <div class="card-body">
+                <h3>Correction-Enabled Workflow Design</h3>
+                <p>Supports correction-based deployment models with streamlined setup, helping teams move from initialization to productive work more efficiently.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=1200&q=80" alt="Satellite dish and communication infrastructure" loading="lazy" />
+              <div class="card-body">
+                <h3>High-Availability Data Continuity</h3>
+                <p>Designed to keep positioning and project data flowing through critical tasks where downtime or unstable outputs can impact delivery schedules.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="applications">
+        <div class="container two-col">
+          <article class="panel">
+            <h2>Industry applications with measurable field value</h2>
+            <p class="lead">
+              Precision GNSS is structured for operations that depend on repeatable, high-confidence positioning.
+              Select an industry context to view how the platform aligns with real project demands.
+            </p>
+            <div class="tabs" role="tablist" aria-label="Industry use cases">
+              <button class="tab-btn active" data-tab="surveying" role="tab" aria-selected="true">Surveying</button>
+              <button class="tab-btn" data-tab="construction" role="tab" aria-selected="false">Construction</button>
+              <button class="tab-btn" data-tab="agriculture" role="tab" aria-selected="false">Agriculture</button>
+              <button class="tab-btn" data-tab="autonomy" role="tab" aria-selected="false">Autonomy</button>
+            </div>
+            <div class="tab-panel active" id="surveying" role="tabpanel">
+              <h3>Surveying and Geospatial Capture</h3>
+              <p class="lead">Support for control establishment, topographic workflows, and data validation with stronger positional confidence in varied terrain.</p>
+              <ul class="feature-list">
+                <li>Control and stakeout tasks with reduced rework cycles</li>
+                <li>Improved consistency across multi-crew projects</li>
+                <li>Reliable positioning support for quality assurance</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="construction" role="tabpanel">
+              <h3>Construction and Machine Guidance</h3>
+              <p class="lead">Workflow continuity from planning to execution for civil, infrastructure, and utility projects requiring precise location intelligence.</p>
+              <ul class="feature-list">
+                <li>Better alignment and verification during layout phases</li>
+                <li>Streamlined communication between field and office teams</li>
+                <li>Improved schedule control through consistent outputs</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="agriculture" role="tabpanel">
+              <h3>Precision Agriculture Operations</h3>
+              <p class="lead">Guidance and mapping support for efficient field movement, repeatable passes, and improved operational planning across growing cycles.</p>
+              <ul class="feature-list">
+                <li>Enhanced guidance repeatability in broad-acre operations</li>
+                <li>More confidence in field boundary and activity mapping</li>
+                <li>Reduced overlap and improved route efficiency</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="autonomy" role="tabpanel">
+              <h3>Autonomous and Robotic Systems</h3>
+              <p class="lead">Reliable positioning input for autonomous workflows that require stable trajectories, better path adherence, and predictable operation logic.</p>
+              <ul class="feature-list">
+                <li>Supports localization confidence in dynamic environments</li>
+                <li>Improves path execution reliability for automated systems</li>
+                <li>Strengthens sensor fusion and mission orchestration</li>
+              </ul>
+            </div>
+          </article>
+          <aside class="panel">
+            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80" alt="Urban infrastructure project managed with geospatial precision" loading="lazy" />
+            <h3 style="margin-top: 1rem">Operational confidence at every project stage</h3>
+            <p class="lead">
+              From first site mobilization to final documentation, Precision GNSS provides a stable positioning foundation that helps teams reduce uncertainty,
+              accelerate delivery cycles, and maintain repeatable quality standards.
+            </p>
+            <a class="btn btn-outline" href="#workflow">View Workflow Model</a>
+          </aside>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <div class="container">
+          <h2>From planning to delivery: a practical precision workflow</h2>
+          <p class="lead">A clear operational model helps technical teams standardize execution, shorten setup time, and improve decision speed under pressure.</p>
+          <div class="timeline">
+            <article class="timeline-item"><strong>1. Project Assessment</strong> — Define accuracy expectations, environmental constraints, and correction requirements before field deployment.</article>
+            <article class="timeline-item"><strong>2. System Configuration</strong> — Set workflows to align with project methods, team structure, and expected verification checkpoints.</article>
+            <article class="timeline-item"><strong>3. Live Field Execution</strong> — Operate with stable positioning support while monitoring continuity and output quality in real time.</article>
+            <article class="timeline-item"><strong>4. Validation and Handover</strong> — Confirm project deliverables with controlled data review and clear operational documentation.</article>
+          </div>
+        </div>
+      </section>
+
+      <section id="news">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>Últimes notícies de Precision GNSS</h2>
+              <p class="lead">Publicacions tècniques, actualitzacions de producte i novetats sobre posicionament d'alta precisió per a equips professionals.</p>
+            </div>
+            <a class="btn btn-outline" href="#contact">Demana informació comercial</a>
+          </div>
+          <div class="news-grid">
+            <article class="news-card" id="news-rtk-infrastructure">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="GNSS deployment in civil infrastructure" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Notícia · Infrastructure</p>
+                <h3>Precision GNSS expands infrastructure workflows for corridor and utility projects</h3>
+                <p>New field procedures improve repeatability in alignment, verification, and as-built documentation for teams operating at scale.</p>
+                <a class="btn btn-outline" href="#news-rtk-infrastructure">Read this update</a>
+              </div>
+            </article>
+            <article class="news-card" id="news-multiconstellation">
+              <img src="https://images.unsplash.com/photo-1417733403748-83bbc7c05140?auto=format&fit=crop&w=1200&q=80" alt="Satellite communication and sky visibility" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Notícia · GNSS Technology</p>
+                <h3>Multi-constellation tracking improvements strengthen continuity in dense environments</h3>
+                <p>Operational updates focus on maintaining stable positioning when field teams work near urban obstacles and reflective surfaces.</p>
+                <a class="btn btn-outline" href="#news-multiconstellation">Read this update</a>
+              </div>
+            </article>
+            <article class="news-card" id="news-enterprise-rollout">
+              <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1200&q=80" alt="Project team reviewing geospatial rollout plans" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Notícia · Enterprise</p>
+                <h3>Enterprise deployment model now supports phased regional rollout strategies</h3>
+                <p>Organizations can align teams, standards, and verification gates with a staged implementation model designed for adoption speed.</p>
+                <a class="btn btn-outline" href="#news-enterprise-rollout">Read this update</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="tutorials">
+        <div class="container">
+          <h2>Tutorials and implementation guides</h2>
+          <p class="lead">Step-by-step resources help teams accelerate onboarding, improve consistency, and apply GNSS best practices in daily operations.</p>
+          <div class="news-grid">
+            <article class="news-card" id="tutorial-rtk-setup">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Technician configuring GNSS setup" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Tutorial · RTK</p>
+                <h3>How to structure a robust RTK startup checklist for field crews</h3>
+                <p>A practical sequence for initialization, signal verification, correction checks, and readiness confirmation before first measurements.</p>
+                <a class="btn btn-outline" href="#tutorial-rtk-setup">Open tutorial</a>
+              </div>
+            </article>
+            <article class="news-card" id="tutorial-quality-control">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Quality control workflow dashboard" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Tutorial · Quality</p>
+                <h3>Field-to-office quality control flow for positioning-critical deliverables</h3>
+                <p>Learn how to define acceptance thresholds, validation checkpoints, and documentation routines that reduce avoidable rework.</p>
+                <a class="btn btn-outline" href="#tutorial-quality-control">Open tutorial</a>
+              </div>
+            </article>
+            <article class="news-card" id="tutorial-autonomy">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80" alt="Autonomous robotic system in testing environment" loading="lazy" />
+              <div class="news-content">
+                <p class="news-meta">Tutorial · Autonomy</p>
+                <h3>Integrating GNSS positioning with autonomous navigation pipelines</h3>
+                <p>A deployment guide for combining GNSS inputs with localization frameworks to improve path reliability and mission repeatability.</p>
+                <a class="btn btn-outline" href="#tutorial-autonomy">Open tutorial</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="insights">
+        <div class="container">
+          <h2>Technical insights for precision-focused organizations</h2>
+          <p class="lead">
+            Organizations scaling digital field operations need both strong positioning performance and a practical implementation strategy.
+            Precision GNSS supports that balance by aligning technical reliability with real operational velocity.
+          </p>
+          <div class="quote-grid" style="margin-top: 1rem">
+            <blockquote>“The true value of precision positioning is not only better coordinates; it is better decisions at every operational checkpoint.”</blockquote>
+            <blockquote>“When teams trust their GNSS outputs, they reduce validation overhead and recover productive time across the project lifecycle.”</blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq">
+        <div class="container">
+          <h2>Frequently asked questions about Precision GNSS</h2>
+          <details open>
+            <summary>What makes Precision GNSS suitable for demanding field environments?</summary>
+            <p>The platform is designed around continuity, signal stability, and practical field usability, helping teams maintain performance where environmental complexity can affect positioning reliability.</p>
+          </details>
+          <details>
+            <summary>Does Precision GNSS fit both small and enterprise deployments?</summary>
+            <p>Yes. Precision GNSS supports scaling from focused project implementations to broader operational programs, with architecture intended to align with evolving organizational needs.</p>
+          </details>
+          <details>
+            <summary>How can teams use tutorials to speed up onboarding?</summary>
+            <p>The tutorial library provides clear setup sequences, quality-control checklists, and operational playbooks that help standardize team performance faster.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="cta-strip">
+            <h2>Plan your precision positioning strategy with our technical team</h2>
+            <p class="lead" style="margin-inline: auto; color: #e0ecff">
+              Share your operational goals and deployment context. We will help map the right GNSS approach for your workflows,
+              implementation phases, and long-term performance objectives.
+            </p>
+            <div class="hero-actions" style="justify-content: center">
+              <a class="btn btn-primary" href="#top">Start a Technical Discussion</a>
+              <a class="btn btn-outline" href="#news">Read Latest News</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <a class="brand-wrap" href="#top" style="display: inline-flex">
+          <img class="brand-logo" src="https://www.precision-gnss.com/wp-content/uploads/precision-gnss-logo.png" alt="Precision GNSS original logo" loading="lazy" />
+          <span class="brand">PRECISION GNSS</span>
+        </a>
+        <p>High-accuracy GNSS technology for surveying, construction, agriculture, infrastructure, and autonomous operations.</p>
+        <div class="footer-links">
+          <a href="#technology">Technology</a>
+          <a href="#applications">Applications</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#news">News</a>
+          <a href="#tutorials">Tutorials</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const tab = button.getAttribute('data-tab');
+          tabButtons.forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          panels.forEach((panel) => panel.classList.remove('active'));
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          document.getElementById(tab).classList.add('active');
+        });
+      });
+    </script>
   </body>
 </html>
